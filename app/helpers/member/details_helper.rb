@@ -1,0 +1,2 @@
+module Member::DetailsHelper
+end
