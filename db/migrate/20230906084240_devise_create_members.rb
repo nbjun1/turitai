@@ -37,7 +37,8 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
 
       t.timestamps null: false
     end
-
+  
+    add_index :members, :name,                 unique: true
     add_index :members, :email,                unique: true
     add_index :members, :reset_password_token, unique: true
     # add_index :members, :confirmation_token,   unique: true
