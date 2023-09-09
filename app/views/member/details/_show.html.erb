@@ -1,0 +1,23 @@
+<h4>会員情報</h4>
+<div class="table">
+    <tr>
+    <th>
+      <%= link_to member_mypage_path(member) do %>
+        <%= image_tag member.get_profile_image %>
+      <% end %>
+    </th>
+  </tr>
+    <tr>
+      <td>name</td>
+    </tr>
+    <tr>
+      <td><%= member.name %></td>
+    </tr>
+    <tr>
+      <td>introduction</td>
+    </tr>
+    <tr>
+      <td><%= member.introduction %></td>
+    </tr>
+  </div>
+  <div><%= link_to "EDIT", member_mypage_edit_path(member.id), class: "btn btn-secondary" %></div>

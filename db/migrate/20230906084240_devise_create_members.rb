@@ -7,6 +7,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :name,               null: false, default: ""
+      t.text :introduction,         null: true, default: ""
       t.boolean :is_withdrawal,     default: false
 
       ## Recoverable
@@ -37,7 +38,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
 
       t.timestamps null: false
     end
-  
+
     add_index :members, :name,                 unique: true
     add_index :members, :email,                unique: true
     add_index :members, :reset_password_token, unique: true

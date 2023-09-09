@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2023_09_07_095252) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", default: "", null: false
+    t.text "introduction", default: ""
     t.boolean "is_withdrawal", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
