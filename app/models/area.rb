@@ -1,3 +1,4 @@
 class Area < ApplicationRecord
-  belongs_to :admin
+  belongs_to :result
+
 end
