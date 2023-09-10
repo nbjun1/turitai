@@ -7,11 +7,16 @@ class Member::ResultsController < ApplicationController
   end
 
   def new
+    @result = Result.new
+  end
+  
+  def create
+    @result.save
   end
 
   private
 
   def result_params
-    params.require(:result).permit()
+    params.require(:result).permit(:title, :body, :image)
   end
 end

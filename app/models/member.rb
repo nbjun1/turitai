@@ -5,8 +5,9 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :results
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :result_images
 
   has_one_attached :profile_image
 
