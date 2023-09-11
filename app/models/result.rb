@@ -1,4 +1,5 @@
 class Result < ApplicationRecord
+  
   belongs_to :member
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy

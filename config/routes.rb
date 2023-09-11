@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     get "/result/new" => "results#new"
     post "/result/new" => "results#create"
     get "/result/edit" => "results#edit"
-    patch "result/edit" => "results#edit"
-    delete "result/edit" => "results#edit"
+    patch "/result/edit" => "results#edit"
+    delete "/result/edit" => "results#edit"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
