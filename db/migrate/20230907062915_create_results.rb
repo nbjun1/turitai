@@ -10,14 +10,14 @@ class CreateResults < ActiveRecord::Migration[6.1]
       t.string :title, null: false, default: ""
       t.text :body, null: false, default: ""
       t.string :name, null: false, default: ""
-      t.string :pointt, null: true, default: ""
-      t.integer :time, default: 0
-      t.integer :weather, default: 0
-      t.integer :tide, default: 0
-      t.integer :tide_updown, default: 0
-      t.integer :wave, default: 0
-      t.integer :light, default: 0
-      t.integer :moon, default: 0
+      t.string :point, null: true, default: ""
+      t.integer :time, default: "選択してください"
+      t.integer :weather, default: "選択してください"
+      t.integer :tide, default: "選択してください"
+      t.integer :tide_updown, default: "選択してください"
+      t.integer :wave, default: "選択してください"
+      t.integer :light, default: "選択してください"
+      t.integer :moon, default: "選択してください"
     end
   end
 end

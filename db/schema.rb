@@ -111,14 +111,14 @@ ActiveRecord::Schema.define(version: 2023_09_07_095252) do
     t.string "title", default: "", null: false
     t.text "body", default: "", null: false
     t.string "name", default: "", null: false
-    t.string "pointt", default: ""
-    t.integer "time", default: 0
-    t.integer "weather", default: 0
-    t.integer "tide", default: 0
-    t.integer "tide_updown", default: 0
-    t.integer "wave", default: 0
-    t.integer "light", default: 0
-    t.integer "moon", default: 0
+    t.string "point", default: ""
+    t.integer "time"
+    t.integer "weather"
+    t.integer "tide"
+    t.integer "tide_updown"
+    t.integer "wave"
+    t.integer "light"
+    t.integer "moon"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

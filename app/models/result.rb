@@ -12,5 +12,5 @@ class Result < ApplicationRecord
   enum tide: { spring_tide: 0, middle_tide: 1, neap_tide: 2, nagasio: 3, wakasio: 4 }
   enum tide_updown: { up_tide: 0, high_tide: 1, down_tide: 2, low_tide: 3 }
   enum wave: { wave0m: 0, wave05m: 1, wave10m: 2, wave15m: 3 }
-  enum light: { unselected: 0, yes: 1, no: 2 }
+  enum light: { yes: 0, no: 1 }
 end
