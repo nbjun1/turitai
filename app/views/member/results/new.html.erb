@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <h4>新規釣果投稿情報入力</h4>
+
+  <% if @result.errors.any? %>
+    <p><%= @result.errors.count %>件のエラーが発生しました</p>
+    <ul>
+      <% @result.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with model: @result, url: member_result_new_path, method: :post, local: true do |f| %>
+    <div class="row">
+      <div class="col">
+        <%= f.label :添付画像 %>
+        <%= f.file_field :images, multiple: true, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :タイトル %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :投稿文 %>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :釣果 %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :ポイント %>
+        <%= f.text_field :point, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-9">
+        <%= f.label :ジャンル %>
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+
+    <!-- エリア（都道府県） エリア（市区町村）APIで実装予定 -->
+    <div class="row">
+      <div class="col">
+        <%= f.label :時間帯 %>
+        <%= f.select :time, Result.times.keys.map { |k| [I18n.t("enums.result.times.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :天気 %>
+        <%= f.select :weather, Result.weathers.keys.map { |k| [I18n.t("enums.result.weathers.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :潮 %>
+        <%= f.select :tide, Result.tides.keys.map { |k| [I18n.t("enums.result.tides.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :潮の上下 %>
+        <%= f.select :tide_updown, Result.tide_updowns.keys.map { |k| [I18n.t("enums.result.tide_updowns.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :波高 %>
+        <%= f.select :wave, Result.waves.keys.map { |k| [I18n.t("enums.result.waves.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.label :光源 %>
+        <%= f.select :light, Result.lights.keys.map { |k| [I18n.t("enums.result.lights.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+
+    <!-- 月齢カレンダーAPI導入したい -->
+
+    <div class="form-group row">
+      <div class="col-sm-9 offset-sm-3">
+        <%= f.submit '釣果投稿', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div><!-- container -->

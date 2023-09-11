@@ -1,0 +1,88 @@
+<header>
+  <nav class="nav navbar-nav navbar-expand-lg bg-white border-bottom">
+    <div class="container-fluid">
+      <!--会員がログインしているとき-->
+        <div class="collapse navbar-collapse">
+        <h2><%= link_to "釣りたい！！", root_path %></h2>
+        <% if member_signed_in? %>
+          <ul class="nav navbar-nav ml-auto">
+            <li class="mr-5">
+              <%= link_to member_mypage_path, class: "nav-link btn btn-outline-primary" do %>
+                マイページ
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to root_path, class: "nav-link btn btn-outline-warning" do %>
+                釣果一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to genre_index_path, class: "nav-link btn btn-outline-success" do %>
+                ジャンル一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to destroy_member_session_path, method: :delete, class: "nav-link btn btn-outline-danger" do %>
+                ログアウト
+              <% end %>
+            </li>
+          </ul>
+          <div><!--%= render "layouts/search" %--></div>
+        </div>
+        <!--管理者がログインしているとき-->
+        <% elsif admin_signed_in? %>
+        <div  class="collapse navbar-collapse">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="mr-5">
+              <%= link_to root_path, class: "nav-link btn btn-outline-warning" do %>
+                釣果一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to admin_top_path, class: "nav-link btn btn-outline-info" do %>
+                会員一覧
+              <% end %>
+            <li class="mr-5">
+              <%= link_to admin_genres_path, class: "nav-link btn btn-outline-secondary" do %>
+                ジャンル一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-outline-danger" do %>
+                ログアウト
+              <% end %>
+            </li>
+          </ul-->
+          <div><!--%= render "layouts/search" %--></div>
+        </div>
+        <!--どちらもログインしていないとき-->
+        <% else %>
+        <div  class="collapse navbar-collapse">
+          <ul class="nav navbar-nav ml-auto">
+            <li class="mr-5">
+              <%= link_to about_path, class: "nav-link btn btn-outline-danger" do %>
+                About
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to genre_index_path, class: "nav-link btn btn-outline-warning" do %>
+                ジャンル一覧
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to new_member_registration_path, class: "nav-link btn btn-outline-success" do %>
+                新規登録
+              <% end %>
+            </li>
+            <li class="mr-5">
+              <%= link_to new_member_session_path, class: "nav-link btn btn-outline-info" do %>
+                ログイン
+              <% end %>
+            </li>
+          </ul>
+          <div><!--%= render "layouts/search" %--></div>
+        </div>
+        <% end %>
+    </div>
+  </nav>
+</header>
