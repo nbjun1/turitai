@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   namespace :member do
     get "/mypage/:id/edit" => "details#edit"
-    patch "/mypage/:id" => "details#update"
+    patch "/mypage/:id/edit" => "details#update"
     get "/mypage/confirm" => "details#confirm"
     patch "/mypage/withdrawal" => "details#withdrawal"
     get "/mypage" => "results#index"

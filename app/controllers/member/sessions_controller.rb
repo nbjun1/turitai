@@ -28,7 +28,7 @@ class Member::SessionsController < Devise::SessionsController
   private
 
   def after_sign_in_path_for(resource)
-    member_mypage_path
+    member_mypage_path(current_member.id)
   end
 
   def after_sign_out_path_for(resource)

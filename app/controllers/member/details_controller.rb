@@ -7,6 +7,16 @@ class Member::DetailsController < ApplicationController
     @member = current_member
   end
 
+  def update
+    @member = Member.find(params[:id])
+    if @member.update(member_params)
+      flash[:notice] = "商品情報を変更しました"
+      redirect_to member_mypage_path
+    else
+      render :edit
+    end
+  end
+
   def confirm
   end
 
