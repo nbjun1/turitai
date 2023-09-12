@@ -22,17 +22,17 @@ Rails.application.routes.draw do
   end
 
   namespace :member do
-    get "/mypage/edit" => "details#edit"
-    patch "/mypage/edit" => "details#update"
+    get "/mypage/:id/edit" => "details#edit"
+    patch "/mypage/:id" => "details#update"
     get "/mypage/confirm" => "details#confirm"
     patch "/mypage/withdrawal" => "details#withdrawal"
     get "/mypage" => "results#index"
-    get "/result/show" => "results#show"
+    get "/result/:id/show" => "results#show", as: :result_show
     get "/result/new" => "results#new"
     post "/result/new" => "results#create"
-    get "/result/edit" => "results#edit"
-    patch "/result/edit" => "results#edit"
-    delete "/result/edit" => "results#edit"
+    get "/result/:id/edit/" => "results#edit", as: :result_edit
+    patch "/result/:id" => "results#update"
+    delete "/result/:id" => "results#destroy"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
