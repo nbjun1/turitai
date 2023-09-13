@@ -33,6 +33,9 @@ Rails.application.routes.draw do
     get "/result/:id/edit/" => "results#edit", as: :result_edit
     patch "/result/:id/edit" => "results#update"
     delete "/result/:id/edit" => "results#destroy"
+    resources :results, only: [] do
+     resources :comments, only: [:create, :destroy]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

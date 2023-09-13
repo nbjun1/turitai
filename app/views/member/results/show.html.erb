@@ -1,10 +1,12 @@
 
 <div>
- <% if @result.result_images.attached? %>
-  <% @result.each do |result| %>
-   <%= image_tag result.get_result_images(200,200) %>
+  <% if @result.result_images.present? %>
+    <% @result.result_images.each do |image| %>
+     <%= image_tag image %>
+    <% end %>
+  <% else %>
+    <%= image_tag "no_image.jpg" %>
   <% end %>
- <% end %>
 </div>
 <div>
   <%= @result.title %>
@@ -38,4 +40,19 @@
 </div>
 <div>
   <%= @result.light %>
+</div>
+
+<div>
+  <p>コメント件数：<%= @result.comments.count %></p>
+  <% @result.comments.each do |comment| %>
+    <p><%= image_tag comment.member.get_profile_image %></p>
+    <%= comment.member.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <% end %>
+</div>
+<div>
+  <%= form_with(model: [@result, @comment], url: member_result_comments_path(@result), method: :post, local: true) do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
 </div>
