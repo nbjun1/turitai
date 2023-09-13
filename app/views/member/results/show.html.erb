@@ -1,6 +1,10 @@
 
 <div>
-  <%= image_tag @result.get_result_image(100, 100) %>
+ <% if @result.result_images.attached? %>
+  <% @result.each do |result| %>
+   <%= image_tag result.get_result_images(200,200) %>
+  <% end %>
+ <% end %>
 </div>
 <div>
   <%= @result.title %>
@@ -15,23 +19,23 @@
   <%= @result.point %>
 </div>
 <div>
-  <%= @result.genre.name %>
+  <%= @result.genre_id %>
 </div>
 <div>
-  <%= @result.time.name %>
+  <%= @result.time %>
 </div>
 <div>
-  <%= @result.weather.name %>
+  <%= @result.weather %>
 </div>
 <div>
-  <%= @result.tide.name %>
+  <%= @result.tide %>
 </div>
 <div>
-  <%= @result.tide_updown.name %>
+  <%= @result.tide_updown %>
 </div>
 <div>
-  <%= @result.wave.name %>
+  <%= @result.wave %>
 </div>
 <div>
-  <%= @result.light.name %>
+  <%= @result.light %>
 </div>

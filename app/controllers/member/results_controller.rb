@@ -1,7 +1,7 @@
 class Member::ResultsController < ApplicationController
   def index
     @member = current_member
-    @results = Result.all.order(created_at: :desc).page(params[:page])
+    @results = Result.where(member_id: current_member.id).includes(:member).order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -21,21 +21,20 @@ class Member::ResultsController < ApplicationController
       flash[:result_created_error] = "釣果が正常に投稿されませんでした。"
       render :new
     end
+  end
 
-    def edit
-    end
+  def edit
+  end
 
-    def update
-    end
+  def update
+  end
 
-    def destroy
-    end
-
+  def destroy
   end
 
   private
 
   def result_params
-    params.require(:result).permit(:title, :body, :result_image, :name, :point, :genre_id, :time, :weather, :tide, :tide_updown, :wave, :light, :area, :area_detail, :moon)
+    params.require(:result).permit(:title, :body, :name, :point, :genre_id, :time, :weather, :tide, :tide_updown, :wave, :light, :area, :area_detail, :moon, result_images: [])
   end
 end
