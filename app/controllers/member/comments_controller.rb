@@ -7,6 +7,11 @@ class Member::CommentsController < ApplicationController
     comment.save
     redirect_to member_result_show_path(result)
   end
+  
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to member_result_show_path(params[:id])
+  end
 
   private
 

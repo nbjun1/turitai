@@ -15,12 +15,4 @@ class Result < ApplicationRecord
   enum wave: { wave0m: 0, wave05m: 1, wave10m: 2, wave15m: 3 }
   enum light: { yes: 0, no: 1 }
 
-  def get_result_images(width, height)
-    unless result_images.attached?
-      file_path = Rails.root.join("app/assets/images/no_image.jpg")
-      result_images.attach(io: File.open(file_path), filename: "default-image.jpg", content_type: "image/jpeg")
-    end
-    result_images.variant(resize_to_fill: [width, height], gravity: :center).processed
-  end
-
 end

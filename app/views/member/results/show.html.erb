@@ -1,58 +1,71 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4">
+      <%= render 'member/details/show', member: @member %>
+    </div>
+    <div class="col-8">
+      <div>
+        <% if @result.result_images.present? %>
+          <% @result.result_images.each do |image| %>
+            <%= image_tag image %>
+          <% end %>
+        <% else %>
+          <%= image_tag "no_image.jpg" %>
+        <% end %>
+      </div>
+      <div>
+        <%= @result.title %>
+      </div>
+      <div>
+        <%= @result.body %>
+      </div>
+      <div>
+        <%= @result.name %>
+      </div>
+      <div>
+        <%= @result.point %>
+      </div>
+      <div>
+        <%= @result.genre_id %>
+      </div>
+      <div>
+        <%= @result.time %>
+      </div>
+      <div>
+        <%= @result.weather %>
+      </div>
+      <div>
+        <%= @result.tide %>
+      </div>
+      <div>
+        <%= @result.tide_updown %>
+      </div>
+      <div>
+        <%= @result.wave %>
+      </div>
+      <div>
+        <%= @result.light %>
+      </div>
 
-<div>
-  <% if @result.result_images.present? %>
-    <% @result.result_images.each do |image| %>
-     <%= image_tag image %>
-    <% end %>
-  <% else %>
-    <%= image_tag "no_image.jpg" %>
-  <% end %>
-</div>
-<div>
-  <%= @result.title %>
-</div>
-<div>
-  <%= @result.body %>
-</div>
-<div>
-  <%= @result.name %>
-</div>
-<div>
-  <%= @result.point %>
-</div>
-<div>
-  <%= @result.genre_id %>
-</div>
-<div>
-  <%= @result.time %>
-</div>
-<div>
-  <%= @result.weather %>
-</div>
-<div>
-  <%= @result.tide %>
-</div>
-<div>
-  <%= @result.tide_updown %>
-</div>
-<div>
-  <%= @result.wave %>
-</div>
-<div>
-  <%= @result.light %>
-</div>
-
-<div>
-  <p>コメント件数：<%= @result.comments.count %></p>
-  <% @result.comments.each do |comment| %>
-    <p><%= image_tag comment.member.get_profile_image %></p>
-    <%= comment.member.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-  <% end %>
-</div>
-<div>
-  <%= form_with(model: [@result, @comment], url: member_result_comments_path(@result), method: :post, local: true) do |f| %>
-    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-</div>
+      <% if member_signed_in? || admin_signed_in? %>
+        <div>
+          <% @result.comments.each do |comment| %>
+            <p><%= image_tag comment.member.get_profile_image %></p>
+            <%= comment.member.name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+            <%= comment.comment %>
+             <% if comment.member == current_member %>
+              <%= link_to "削除", member_delete_comment_path(comment.result, comment), method: :delete %>
+             <% end %>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with(model: [@result, @comment], url: member_result_comments_path(@result), method: :post, local: true) do |f| %>
+            <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+            <%= f.submit "送信する" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div><!-- col-8 -->
+  </div><!-- row -->
+</div><!-- container -->
