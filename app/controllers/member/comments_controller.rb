@@ -9,8 +9,10 @@ class Member::CommentsController < ApplicationController
   end
 
   def destroy
-    current_member.comments.find(params[:id]).destroy
-    redirect_to member_result_show_path, notice: "コメントを削除しました"
+    @comment = Comment.find(params[:id])
+    @result = @comment.result
+    @comment.destroy
+    redirect_to member_result_show_path(@result), notice: "コメントを削除しました"
   end
 
   private

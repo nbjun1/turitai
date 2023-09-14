@@ -8,6 +8,7 @@ class Member::ResultsController < ApplicationController
     @result = Result.find(params[:id])
     @comment = Comment.new
     @member = current_member
+    @comments = Comment.all
   end
 
   def new
