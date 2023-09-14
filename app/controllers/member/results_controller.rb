@@ -32,6 +32,9 @@ class Member::ResultsController < ApplicationController
   end
 
   def destroy
+    @result = Result.find(params[:id])
+    @result.destroy
+    redirect_to member_mypage_path(@member.id)
   end
 
   private

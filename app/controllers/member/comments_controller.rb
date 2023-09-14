@@ -7,10 +7,10 @@ class Member::CommentsController < ApplicationController
     comment.save
     redirect_to member_result_show_path(result)
   end
-  
+
   def destroy
-    Comment.find(params[:id]).destroy
-    redirect_to member_result_show_path(params[:id])
+    current_member.comments.find(params[:id]).destroy
+    redirect_to member_result_show_path, notice: "コメントを削除しました"
   end
 
   private

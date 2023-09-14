@@ -32,11 +32,11 @@ Rails.application.routes.draw do
     post "/result/new" => "results#create"
     get "/result/:id/edit/" => "results#edit", as: :result_edit
     patch "/result/:id/edit" => "results#update"
-    delete "/result/:id/edit" => "results#destroy"
+    delete "/result/:id/edit" => "results#destroy", as: :delete_result
     resources :results, only: [] do
      resources :comments, only: [:create]
     end
-    get "/results/:id/comments/:id" => "comments#destroy", as: "delete_comment"
+    get "/results/:id/comments/:id" => "comments#destroy", as: :delete_comment
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

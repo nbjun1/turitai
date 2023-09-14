@@ -46,10 +46,15 @@
       <div>
         <%= @result.light %>
       </div>
-
+      <div>
+          <% if @result.member == current_member %>
+            <%= link_to '編集', member_result_edit_path(@result), class: "btn btn-sm btn-success" %>
+            <%= link_to "削除", member_delete_result_path(@result), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+          <% end %>
+      </div>
       <% if member_signed_in? || admin_signed_in? %>
         <div>
-          <% @result.comments.each do |comment| %>
+          <% @comments.each do |comment| %>
             <p><%= image_tag comment.member.get_profile_image %></p>
             <%= comment.member.name %>
             <%= comment.created_at.strftime('%Y/%m/%d') %>
@@ -60,7 +65,7 @@
           <% end %>
         </div>
         <div>
-          <%= form_with(model: [@result, @comment], url: member_result_comments_path(@result), method: :post, local: true) do |f| %>
+          <%= form_with model: [@result, @comment], url: member_result_comments_path(@result), method: :post, local: true do |f| %>
             <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
           <% end %>
