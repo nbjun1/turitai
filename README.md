@@ -28,5 +28,5 @@
 ### 開発環境
 - OS:Windows 10
 - 言語:Ruby
-- フレームワーク:Ruby on Rails
+- フレームワーク:Ruby on Rails 6.1.7.6
 - IDE:Cloud9

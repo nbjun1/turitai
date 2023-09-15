@@ -22,17 +22,17 @@ Rails.application.routes.draw do
   end
 
   namespace :member do
-    get "/mypage/:id/edit" => "details#edit"
-    patch "/mypage/:id/edit" => "details#update"
-    get "/mypage/confirm" => "details#confirm"
-    patch "/mypage/withdrawal" => "details#withdrawal"
+    get "/mypage/:id/edit" => "details#edit", as: :mypage_edit
+    patch "/mypage/:id/edit" => "details#update", as: :mypage_update
+    get "/mypage/:id/confirm" => "details#confirm", as: :mypage_confirm
+    patch "/mypage/:id/withdrawal" => "details#withdrawal", as: :mypage_withdrawal
     get "/mypage" => "results#index"
     get "/result/:id/show" => "results#show", as: :result_show
     get "/result/new" => "results#new"
     post "/result/new" => "results#create"
     get "/result/:id/edit/" => "results#edit", as: :result_edit
     patch "/result/:id/edit" => "results#update"
-    delete "/result/:id/edit" => "results#destroy", as: :delete_result
+    get "/result/:id" => "results#destroy", as: :result_delete
     resources :results, only: [] do
      resources :comments, only: [:create]
     end

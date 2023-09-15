@@ -1,13 +1,18 @@
 class Member::ResultsController < ApplicationController
+
   def index
-    @member = current_member
-    @results = Result.where(member_id: current_member.id).includes(:member).order(created_at: :desc).page(params[:page])
+    if member_signed_in?
+      @member = current_member
+      @results = Result.where(member_id: @member.id).includes(:member).order(created_at: :desc).page(params[:page])
+    else
+      redirect_to root_path, notice: "ログインユーザー機能ですトップページに戻りました"
+    end
   end
 
   def show
     @result = Result.find(params[:id])
     @comment = Comment.new
-    @member = current_member
+    @member = @result.member
     @comments = Comment.all
   end
 
@@ -35,7 +40,7 @@ class Member::ResultsController < ApplicationController
   def destroy
     @result = Result.find(params[:id])
     @result.destroy
-    redirect_to member_mypage_path(@member.id)
+    redirect_to member_mypage_path(@member)
   end
 
   private
