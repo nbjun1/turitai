@@ -1,8 +1,9 @@
 class Result < ApplicationRecord
+
   belongs_to :member
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many_attached :result_image
+  has_many_attached :result_images
 
   validates :title, presence: true
   validates :body, presence: true
@@ -13,4 +14,5 @@ class Result < ApplicationRecord
   enum tide_updown: { up_tide: 0, high_tide: 1, down_tide: 2, low_tide: 3 }
   enum wave: { wave0m: 0, wave05m: 1, wave10m: 2, wave15m: 3 }
   enum light: { yes: 0, no: 1 }
+
 end

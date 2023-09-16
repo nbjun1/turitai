@@ -14,7 +14,7 @@
     <div class="row">
       <div class="col">
         <%= f.label :添付画像 %>
-        <%= f.file_field :images, multiple: true, class: "form-control" %>
+        <%= f.file_field :result_images, multiple: true, class: "form-control", accept: 'image/*' %>
       </div>
     </div>
     <div class="row">
@@ -49,6 +49,7 @@
     </div>
 
     <!-- エリア（都道府県） エリア（市区町村）APIで実装予定 -->
+
     <div class="row">
       <div class="col">
         <%= f.label :時間帯 %>

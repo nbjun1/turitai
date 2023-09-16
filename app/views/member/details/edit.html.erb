@@ -1,2 +1,35 @@
-<h1>Member::Details#edit</h1>
-<p>Find me in app/views/member/details/edit.html.erb</p>
+<div class="container-fluid">
+  <h4 class="mb-5">メンバー情報</h4>
+  <%= form_with model: @member, url: member_path, method: :patch, local: true do |f| %>
+  <div class="row">
+    <label class="col-4">名前</label>
+    <div class="col-4">
+      <%= f.text_field :name, autoforcus: true %>
+    </div><!-- col -->
+    <label class="col-8">紹介文</label>
+    <div class="col-8">
+       <%= f.text_area :introduction %>
+    </div>
+  </div><!-- row -->
+  <div class="row">
+    <label class="col-4">プロフィール画像</label>
+    <div class="col-4">
+       <%= f.file_field :profile_image, accept: 'image/*' %>
+    </div><!-- col-4 -->
+    <label class="col-8">メールアドレス</label>
+    <div>
+       <%= f.text_field :email %>
+    </div>
+  </div><!-- row -->
+      <div class="row">
+          <div class="col">
+            <%= f.submit "変更を保存", class: "btn btn-success" %>
+          </div>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col">
+      <%= link_to "退会する", member_mypage_confirm_path, class: "btn btn-danger" %>
+    </div>
+  </div><!-- row -->
+</div><!-- container -->
