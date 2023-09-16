@@ -1,3 +1,7 @@
 class Genre < ApplicationRecord
-  belongs_to :result
+
+  has_many :result
+
+  validates :method, presence: true
+
 end

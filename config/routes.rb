@@ -22,21 +22,20 @@ Rails.application.routes.draw do
   end
 
   namespace :member do
-    get "/mypage/:id/edit" => "details#edit", as: :mypage_edit
-    patch "/mypage/:id/edit" => "details#update", as: :mypage_update
+    get "/mypage/:id/edit" => "details#edit"
+    patch "/mypage/:id/edit" => "details#update"
     get "/mypage/:id/confirm" => "details#confirm", as: :mypage_confirm
-    patch "/mypage/:id/withdrawal" => "details#withdrawal", as: :mypage_withdrawal
+    patch "/mypage/:id/withdrawal" => "details#withdrawal"
     get "/mypage" => "results#index"
     get "/result/:id/show" => "results#show", as: :result_show
     get "/result/new" => "results#new"
     post "/result/new" => "results#create"
     get "/result/:id/edit/" => "results#edit", as: :result_edit
-    patch "/result/:id/edit" => "results#update"
-    get "/result/:id" => "results#destroy", as: :result_delete
+    patch "/result/:id" => "results#update"
+    delete "/result/:id" => "results#destroy"
     resources :results, only: [] do
-     resources :comments, only: [:create]
+     resources :comments, only: [:create, :destroy]
     end
-    get "/results/:id/comments/:id" => "comments#destroy", as: :delete_comment
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
