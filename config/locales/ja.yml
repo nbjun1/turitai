@@ -1,38 +1,38 @@
 ja:
   enums:
     result:
-      time:
+      times:
         morning_mazume: "朝マズメ"
         day_time: "日中"
         evening_mazume: "夕マズメ"
         night_time: "夜間"
 
-      weather:
+      weathers:
         sunny: "晴れ"
         cloudy: "曇り"
         rain: "雨"
         snow: "雪"
 
-      tide:
-        spring_tide: "大塩"
-        middle_tide: "中塩"
+      tides:
+        spring_tide: "大潮"
+        middle_tide: "中潮"
         neap_tide: "小潮"
         nagasio: "長潮"
         wakasio: "若潮"
 
-      tide_updown:
+      tide_updowns:
         up_tide: "上げ潮"
         high_tide: "満潮"
         down_tide: "下げ潮"
         low_tide: "干潮"
 
-      wave:
+      waves:
         wave0m: "波高0.5m未満"
         wave05m: "波高1.0m未満"
         wave10m: "波高1.5m未満"
         wave15m: "波高1.5m以上"
 
-      light:
+      lights:
         yes: "有り"
         no: "無し"
 

@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     get "/result/:id/show" => "results#show", as: :result_show
     get "/result/new" => "results#new"
     post "/result/new" => "results#create"
-    get "/result/:id/edit/" => "results#edit", as: :result_edit
-    patch "/result/:id" => "results#update"
+    get "/result/:id/edit" => "results#edit", as: :result_edit
+    patch "/result/:id/edit" => "results#update"
     delete "/result/:id" => "results#destroy", as: :result_delete
     resources :results, only: [] do
      resources :comments, only: [:create, :destroy]
