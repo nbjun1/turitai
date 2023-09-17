@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     get "/mypage/:id/edit" => "details#edit"
     patch "/mypage/:id/edit" => "details#update"
     get "/mypage/:id/confirm" => "details#confirm", as: :mypage_confirm
-    patch "/mypage/:id/withdrawal" => "details#withdrawal"
-    get "/mypage" => "results#index"
+    patch "/mypage/:id/withdrawal" => "details#withdrawal", as: :mypage_withdrawal
+    get "/mypage/:id" => "results#index", as: :mypage
     get "/result/:id/show" => "results#show", as: :result_show
     get "/result/new" => "results#new"
     post "/result/new" => "results#create"

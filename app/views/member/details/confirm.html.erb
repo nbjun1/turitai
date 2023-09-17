@@ -1,2 +1,17 @@
-<h1>Member::Details#confirm</h1>
-<p>Find me in app/views/member/details/confirm.html.erb</p>
+<h1 class="center-block">
+  本当に退会しますか
+</h1>
+
+
+  <div class="center-block">
+    退会すると、会員登録情報や</br>
+    これまでの釣果履歴の閲覧ができなくなります。</br>
+    退会する場合は、「退会する」をクリックしてください。
+  </div>
+
+<div class="form-group row mt-4">
+  <div class="col-sm-9 offset-sm-3">
+    <%= link_to '退会しない', member_mypage_path, class: "btn btn-success" %>
+    <%= link_to "退会する", member_mypage_withdrawal_path, method: :patch, class: "btn btn-danger", data: { confirm: "本当に退会しますか？" }  %>
+  </div>
+</div>

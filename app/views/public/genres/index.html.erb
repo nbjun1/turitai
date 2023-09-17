@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-5">
-      <%= render 'member/details/show', member: @member %>
+      <% if member_signed_in? || admin_signed_in? %>
+       <%= render 'member/details/show', member: @member %>
+      <% end %>
     </div>
     <div class="col-7">
       <table>

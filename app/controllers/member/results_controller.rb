@@ -1,12 +1,8 @@
 class Member::ResultsController < ApplicationController
 
   def index
-    if member_signed_in?
-      @member = current_member
-      @results = Result.where(member_id: @member.id).includes(:member).order(created_at: :desc).page(params[:page])
-    else
-      redirect_to root_path, notice: "ログインユーザー機能ですトップページに戻りました"
-    end
+    @member = Member.find(params[:id])
+    @results = Result.where(member_id: @member.id).includes(:member).order(created_at: :desc).page(params[:page])
   end
 
   def show
