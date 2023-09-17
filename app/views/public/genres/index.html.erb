@@ -1,6 +1,28 @@
-<h2>genre index</h2>
-<div>
-  <tbody>
-    <%= link_to
-  </tbody>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-5">
+      <%= render 'member/details/show', member: @member %>
+    </div>
+    <div class="col-7">
+      <table>
+        <thead>
+          <tr>
+            <th>ジャンル</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <td><%= genre.method %></td>
+              <td><%= link_to "ジャンル釣果", genre_show_path(genre) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center text-center">
+        <%= paginate @genres %>
+      </div>
+    </div>
+  </div>
 </div>

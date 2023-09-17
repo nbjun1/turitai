@@ -44,7 +44,7 @@
     <div class="form-group row">
       <div class="col-sm-9">
         <%= f.label :ジャンル %>
-        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), include_blank: "--選択して下さい--", class: "form-control" %>
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :method), include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
 

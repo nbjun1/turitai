@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "public/homes#top"
   get "/about" => "public/homes#about", as: :about
   get "/genre/index" => "public/genres#index"
-  get "/genre/show" => "public/genres#show"
+  get "/genre/:id/show" => "public/genres#show", as: :genre_show
 
   devise_for :admin, :controllers => {
   :sessions => 'admin/sessions',
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     post "/result/new" => "results#create"
     get "/result/:id/edit/" => "results#edit", as: :result_edit
     patch "/result/:id" => "results#update"
-    delete "/result/:id" => "results#destroy"
+    delete "/result/:id" => "results#destroy", as: :result_delete
     resources :results, only: [] do
      resources :comments, only: [:create, :destroy]
     end
