@@ -41,8 +41,9 @@ class Member::ResultsController < ApplicationController
 
   def destroy
     @result = Result.find(params[:id])
+    @member = @result.member
     @result.destroy
-    redirect_to member_mypage_path(@member), notice: "削除しました。"
+    redirect_to member_mypage_path(@member.id), notice: "削除しました。"
   end
 
   private

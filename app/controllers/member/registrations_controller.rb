@@ -63,6 +63,6 @@ class Member::RegistrationsController < Devise::RegistrationsController
   private
 
   def after_sign_up_path_for(resource)
-    member_mypage_path
+    member_mypage_path(resource.id)
   end
 end
