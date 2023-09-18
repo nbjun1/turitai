@@ -12,10 +12,8 @@ class Member::DetailsController < ApplicationController
 
   def update
     @member = Member.find(params[:id])
-    
     if @member.update(member_params)
-      flash[:notice] = "登録情報を変更しました"
-      redirect_to member_mypage_path(@member.id)
+      redirect_to member_mypage_path(@member.id), notice: "登録情報を変更しました"
     else
       render :edit
     end
@@ -29,8 +27,7 @@ class Member::DetailsController < ApplicationController
     @member = Member.find(current_member.id)
     @member.update(is_withdrawal: true)
     reset_session
-      flash[:notice] = "退会しました。"
-    redirect_to root_path
+    redirect_to root_path, notice: "退会しました。"
   end
 
   private

@@ -1,2 +1,41 @@
+<div class="container-fluid">
 <h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+  <div class="row">
+    <div class"col">
+      <table>
+        <thead>
+          <tr>
+            <th>メンバーID</th>
+            <th>ニックネーム</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @members.each do |member| %>
+          <tr>
+            <td><%= member.id %></td>
+            <td>
+              <%= link_to admin_member_path(member) do %>
+               <%= member.name %>
+              <% end %>
+            </td>
+            <td>
+              <% if member.is_withdrawal == false %>
+               <p class="text-success">有効</p>
+              <% else %>
+               <p class="text-denger">退会</p>
+              <% end %>
+            </td>
+            <td><%= link_to "詳細", admin_member_path(member.id) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center text-center">
+        <%= paginate @members %>
+      </div>
+    </div>
+  </div>
+</div>
+
