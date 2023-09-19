@@ -55,13 +55,13 @@ ActiveRecord::Schema.define(version: 2023_09_07_095252) do
   create_table "area_details", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "detail_name", default: 0
+    t.string "detail_name", default: "", null: false
   end
 
   create_table "areas", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "name", default: 0
+    t.string "name", default: "", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2023_09_07_095252) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "member_id"
     t.integer "result_id"
-    t.text "comment", default: "", null: false
+    t.text "comment"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 2023_09_07_095252) do
     t.integer "area_id"
     t.integer "area_detail_id"
     t.string "title", default: "", null: false
-    t.text "body", default: "", null: false
+    t.text "body"
     t.string "name", default: "", null: false
     t.string "point", default: ""
     t.integer "time"

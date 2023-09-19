@@ -8,7 +8,7 @@ class CreateResults < ActiveRecord::Migration[6.1]
       t.integer :area_id
       t.integer :area_detail_id
       t.string :title, null: false, default: ""
-      t.text :body, null: false, default: ""
+      t.text :body
       t.string :name, null: false, default: ""
       t.string :point, null: true, default: ""
       t.integer :time, default: "選択してください"

@@ -5,7 +5,7 @@ class CreateComments < ActiveRecord::Migration[6.1]
       t.timestamps
       t.integer :member_id
       t.integer :result_id
-      t.text :comment, null: false, default: ""
+      t.text :comment
     end
   end
 end

@@ -3,7 +3,7 @@ class CreateAreas < ActiveRecord::Migration[6.1]
     create_table :areas do |t|
 
       t.timestamps
-      t.integer :name, default: 0
+      t.string :name, null: false, default: ""
     end
   end
 end
