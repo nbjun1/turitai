@@ -9,7 +9,6 @@ class Member::ResultsController < ApplicationController
     @result = Result.find(params[:id])
     @comment = Comment.new
     @member = @result.member
-    @comments = Comment.all
   end
 
   def new
