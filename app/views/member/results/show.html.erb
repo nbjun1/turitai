@@ -72,7 +72,7 @@
                   </td>
                   <td>
                     <%= comment.created_at.strftime('%Y/%m/%d') %>
-                    <% if comment.member == current_member %>
+                    <% if comment.member == current_member || admin_signed_in? %>
                       <td>
                         <%= link_to "削除", member_result_comment_path(comment.result, comment), method: :delete %>
                       </td>
@@ -84,10 +84,12 @@
           </table>
         </div>
         <div>
+         <% if member_signed_in? %>
           <%= form_with model: [@result, @comment], url: member_result_comments_path(@result), method: :post, local: true do |f| %>
             <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
           <% end %>
+         <% end %>
         </div>
       <% end %>
     </div><!-- col-8 -->

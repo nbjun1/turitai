@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "/about" => "public/homes#about", as: :about
   get "/genre/index" => "public/genres#index"
   get "/genre/:id/show" => "public/genres#show", as: :genre_show
+  get "search" => "searches#search"
 
   devise_for :admin, :controllers => {
   :sessions => 'admin/sessions',
