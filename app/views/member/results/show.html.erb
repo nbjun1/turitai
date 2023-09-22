@@ -47,6 +47,9 @@
         <%= @result.light %>
       </div>
       <div>
+       <%= render "member/favorites/favorite", result: @result %>
+      </div>
+      <div>
         <% if @result.member == current_member %>
           <%= link_to '編集', member_result_edit_path(@result), class: "btn btn-sm btn-success" %>
           <%= link_to "削除", member_result_delete_path(@result), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>

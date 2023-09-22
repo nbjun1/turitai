@@ -6,6 +6,10 @@ class Result < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many_attached :result_images
 
+  def favorited_by?(member)
+    favorites.exists?(member_id: member.id)
+  end
+
   validates :title, presence: true
   validates :body, presence: true
 
