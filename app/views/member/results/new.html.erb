@@ -48,7 +48,15 @@
       </div>
     </div>
 
-    <!-- エリア（都道府県） エリア（市区町村）APIで実装予定 -->
+    <div class="row">
+      <div class="col">
+        <%= f.label :都道府県 %>
+        <%= f.select :area, @prefectures, include_blank: "--選択して下さい--", class: "form-control" %>
+        <% if @cities %>
+          <%= f.select :area_detail, @cities, include_blank: "--選択して下さい--", class: "form-control" %>
+        <% end %>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col">
@@ -86,8 +94,6 @@
         <%= f.select :light, Result.lights.keys.map { |k| [I18n.t("enums.result.lights.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
-
-    <!-- 月齢カレンダーAPI導入したい -->
 
     <div class="form-group row">
       <div class="col-sm-9 offset-sm-3">

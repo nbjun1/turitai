@@ -1,3 +1,6 @@
+require 'net/http'
+require 'uri'
+require 'json'
 class Member::ResultsController < ApplicationController
 
   def index
@@ -13,6 +16,7 @@ class Member::ResultsController < ApplicationController
 
   def new
     @result = Result.new
+    @prefectures = get_prefectures
   end
 
   def create
@@ -49,5 +53,19 @@ class Member::ResultsController < ApplicationController
 
   def result_params
     params.require(:result).permit(:title, :body, :name, :point, :genre_id, :time, :weather, :tide, :tide_updown, :wave, :light, :area, :area_detail, :moon, result_images: [])
+  end
+
+  def get_prefectures
+    uri = URI.parse('https://geoapi.heartrails.com/api/json?method=getPrefectures')
+    response = Net::HTTP.get_response(uri)
+    JSON.parse(response.body)['response']['prefecture']
+  end
+
+  def get_cities
+  prefecture_name = params[:prefecture]
+  encoded_prefecture_name = URI.encode(prefecture_name)
+  uri = URI.parse("https://geoapi.heartrails.com/api/json?method=getCities&prefecture=#{encoded_prefecture_name}")
+  response = Net::HTTP.get_response(uri)
+  JSON.parse(response.body)['response']['city']
   end
 end
