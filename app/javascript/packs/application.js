@@ -13,6 +13,7 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
 import "../stylesheets/style.css";
+import "../packs/cities.js";
 
 Rails.start()
 Turbolinks.start()

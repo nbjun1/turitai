@@ -27,7 +27,7 @@
               <% end %>
             </li>
           </ul>
-          <div><!--%= render "layouts/search" %--></div>
+          <div><%= render "layouts/search" %></div>
         </div>
         <!--管理者がログインしているとき-->
         <% elsif admin_signed_in? %>
@@ -53,7 +53,7 @@
               <% end %>
             </li>
           </ul-->
-          <div><!--%= render "layouts/search" %--></div>
+          <div><!--%= render "layouts/search" % admin側に検索窓必要？一応コードをコメントアウトしておく--></div>
         </div>
         <!--どちらもログインしていないとき-->
         <% else %>
@@ -85,7 +85,7 @@
               <% end %>
             </li>
           </ul>
-          <div><!--%= render "layouts/search" %--></div>
+          <div><%= render "layouts/search" %></div>
         </div>
         <% end %>
     </div>

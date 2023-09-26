@@ -8,6 +8,11 @@ class Result < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true
+  validates :name, presence: true
+
+  def favorited_by?(member)
+    favorites.exists?(member_id: member.id)
+  end
 
   enum time: { morning_mazume: 0, day_time: 1, evening_mazume: 2, night_time: 3 }
   enum weather: { sunny: 0, cloudy: 1, rain: 2, snow: 3, }
@@ -16,4 +21,13 @@ class Result < ApplicationRecord
   enum wave: { wave0m: 0, wave05m: 1, wave10m: 2, wave15m: 3 }
   enum light: { yes: 0, no: 1 }
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @result = Result.where("name LIKE?","#{word}")
+    elsif search == "partial_match"
+      @result = Result.where("name LIKE?","%#{word}%")
+    else
+      @result = Result.all
+    end
+  end
 end

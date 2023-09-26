@@ -47,28 +47,49 @@
         <%= @result.light %>
       </div>
       <div>
-          <% if @result.member == current_member %>
-            <%= link_to '編集', member_result_edit_path(@result), class: "btn btn-sm btn-success" %>
-            <%= link_to "削除", member_result_delete_path(@result), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
-          <% end %>
+       <%= render "member/favorites/favorite", result: @result %>
+      </div>
+      <div>
+        <% if @result.member == current_member %>
+          <%= link_to '編集', member_result_edit_path(@result), class: "btn btn-sm btn-success" %>
+          <%= link_to "削除", member_result_delete_path(@result), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
+        <% end %>
       </div>
       <% if member_signed_in? || admin_signed_in? %>
         <div>
-          <% @comments.each do |comment| %>
-            <p><%= image_tag comment.member.get_profile_image %></p>
-            <%= comment.member.name %>
-            <%= comment.created_at.strftime('%Y/%m/%d') %>
-            <%= comment.comment %>
-             <% if comment.member == current_member %>
-              <%= link_to "削除", member_result_comment_path(comment.result, comment), method: :delete %>
-             <% end %>
-          <% end %>
+          <table class="table">
+            <% @result.comments.each do |comment| %>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= comment.comment %>
+                  </td>
+                  <td>
+                    <%= link_to member_mypage_path(@member) do %>
+                      <%= image_tag comment.member.get_profile_image %>
+                      <%= comment.member.name %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= comment.created_at.strftime('%Y/%m/%d') %>
+                    <% if comment.member == current_member || admin_signed_in? %>
+                      <td>
+                        <%= link_to "削除", member_result_comment_path(comment.result, comment), method: :delete %>
+                      </td>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
         </div>
         <div>
+         <% if member_signed_in? %>
           <%= form_with model: [@result, @comment], url: member_result_comments_path(@result), method: :post, local: true do |f| %>
             <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
             <%= f.submit "送信する" %>
           <% end %>
+         <% end %>
         </div>
       <% end %>
     </div><!-- col-8 -->

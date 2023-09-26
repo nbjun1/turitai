@@ -8,6 +8,9 @@ class Member::CommentsController < ApplicationController
     redirect_to member_result_show_path(result)
   end
 
+  def update
+  end
+
   def destroy
     @comment = Comment.find(params[:id])
     @result = @comment.result

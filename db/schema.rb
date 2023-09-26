@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_09_07_095252) do
+ActiveRecord::Schema.define(version: 2023_09_26_042145) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,16 +52,10 @@ ActiveRecord::Schema.define(version: 2023_09_07_095252) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "area_details", force: :cascade do |t|
+  create_table "cities", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "detail_name", default: "", null: false
-  end
-
-  create_table "areas", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "name", default: "", null: false
+    t.string "city", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -99,6 +93,12 @@ ActiveRecord::Schema.define(version: 2023_09_07_095252) do
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["name"], name: "index_members_on_name", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "prefecture", null: false
   end
 
   create_table "results", force: :cascade do |t|
