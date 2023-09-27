@@ -48,7 +48,14 @@
       </div>
     </div>
 
-    <!-- エリア（都道府県） エリア（市区町村）APIで実装予定 -->
+    <div class="row">
+      <div class="col">
+        <%= f.label :都道府県 %>
+        <%= f.text_field :prefecture, include_blank: "--入力して下さい--", class: "form-control" %>
+        <%= f.label :市区町村 %>
+        <%= f.text_field :city, include_blank: "--入力してください--", class: "form-control" %>
+      </div>
+    </div>
 
     <div class="row">
       <div class="col">
