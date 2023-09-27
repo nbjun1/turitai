@@ -1,38 +1,43 @@
-<% if member_signed_in? || admin_signed_in? %>
-  <h4>会員情報</h4>
-  <div class="table">
-   <% if member && member.id %>
-    <tbody>
-      <tr>
-        <th>
-          <%= link_to member_mypage_path(member) do %>
-            <%= image_tag member.get_profile_image %>
-          <% end %>
-        </th>
-      </tr>
-      <tr>
-        <td>name</td>
-      </tr>
-      <tr>
-        <td><%= member.name %></td>
-      </tr>
-      <tr>
-        <td>introduction</td>
-      </tr>
-      <tr>
-        <td><%= member.introduction %></td>
-      </tr>
-    </tbody>
-   <% end %>
-  </div>
-<% end %>
-  <% if current_member == @member && member.present? %>
-   <% unless member.guest_member? %>
+<div class="container">
+  <% if member_signed_in? || admin_signed_in? %>
+    <h4>会員情報</h4>
+    <div class="row">
+      <div class="col">
+        <% if member && member.id %>
+          <div>
+            <%= link_to member_mypage_path(member) do %>
+              <%= image_tag member.get_profile_image %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <div>ニックネーム</div>
+      </div>
+      <div class="col-2">
+        <div><%= member.name %></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1">
+        <div>紹介文</div>
+      </div>
+      <div class="col-3">
+        <div><%= member.introduction %></div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if current_member == @member && member.present? %>
+  <% unless member.guest_member? %>
     <div>
       <%= link_to "EDIT", member_path(member.id), class: "btn btn-secondary" %>
     </div>
-   <% end %>
-    <div>
-      <%= link_to "新規釣果", member_result_new_path, class: "btn btn-success" %>
-    </div>
   <% end %>
+  <div>
+    <%= link_to "新規釣果", member_result_new_path, class: "btn btn-success" %>
+  </div>
+<% end %>
