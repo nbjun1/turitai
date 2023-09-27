@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get "/about" => "public/homes#about", as: :about
   get "/genre/index" => "public/genres#index"
   get "/genre/:id/show" => "public/genres#show", as: :genre_show
-  get "search" => "searches#search"
+  get "/search" => "public/searches#search"
+  get "/keysearch" => "public/searches#keysearch"
 
   devise_for :admin, :controllers => {
   :sessions => 'admin/sessions',
@@ -42,11 +43,11 @@ Rails.application.routes.draw do
     resources :results, only: [] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
-
-      collection do
-        get 'get_cities' # /member/results/get_cities エンドポイントの追加
-      end
     end
+  end
+
+  devise_scope :member do
+    post "member/guest_sign_in", to: "member/sessions#guest_sign_in"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

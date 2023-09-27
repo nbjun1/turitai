@@ -1,0 +1,66 @@
+<table class="table table-hover table-inverse">
+  <!-- 検索対象モデルがresultrの時 -->
+
+  <% if @range == "Result" %>
+  <h2>検索結果 "<%= @word %>"</h2>
+   <thead>
+     <tr>
+       <th>釣果</th>
+       <th>都道府県</th>
+       <th>市区町村</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @results.each do |result| %>
+      <tr>
+        <td><%= result.name %></td>
+        <td><%= result.prefecture %></td>
+        <td><%= result.city %></td>
+        <td><%= link_to '詳細', member_result_show_path(result) %></td>
+      </tr>
+     <% end %>
+   </tbody>
+
+  <!-- 検索対象モデルがprefectur API導入と読み込んだ名前を渡せるようになれば -->
+  <% elsif @range == "Result" %>
+  <h2>検索結果 "<%= @prefecture %>"</h2>
+   <thead>
+     <tr>
+       <th>都道府県</th>
+       <th>市区町村</th>
+       <th>釣果</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @results.each do |result| %>
+      <tr>
+        <td><%= result.prefecture %></td>
+        <td><%= result.city %></td>
+        <td><%= result.name %></td>
+        <td><%= link_to '詳細', member_result_show_path(result) %></td>
+      </tr>
+     <% end %>
+   </tbody>
+
+     <!-- 検索対象モデルがcity API導入と読み込んだ名前を渡せるようになれば -->
+  <% elsif @range == "Result" %>
+  <h2>検索結果 "<%= @city %>"</h2>
+   <thead>
+     <tr>
+       <th>市区町村</th>
+       <th>都道府県</th>
+       <th>釣果</th>
+     </tr>
+   </thead>
+   <tbody>
+     <% @results.each do |result| %>
+      <tr>
+        <td><%= result.city %></td>
+        <td><%= result.prefecture %></td>
+        <td><%= result.name %></td>
+        <td><%= link_to '詳細', member_result_show_path(result) %></td>
+      </tr>
+     <% end %>
+   </tbody>
+   <% end %>
+</table>

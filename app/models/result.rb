@@ -2,6 +2,11 @@ class Result < ApplicationRecord
 
   belongs_to :member
   belongs_to :genre
+
+  #APIで読み込んだ情報を新規投稿時に渡せなかったのでいったん切り離しテーブルのカラムも変更している
+  # belongs_to :prefecture
+  # belongs_to :city
+
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many_attached :result_images
@@ -19,9 +24,9 @@ class Result < ApplicationRecord
   enum tide: { spring_tide: 0, middle_tide: 1, neap_tide: 2, nagasio: 3, wakasio: 4 }
   enum tide_updown: { up_tide: 0, high_tide: 1, down_tide: 2, low_tide: 3 }
   enum wave: { wave0m: 0, wave05m: 1, wave10m: 2, wave15m: 3 }
-  enum light: { yes: 0, no: 1 }
+  enum light: { presence: 0, absence: 1 }
 
-  def self.looks(search, word)
+  def self.looks(search, word, prefecture, city)
     if search == "perfect_match"
       @result = Result.where("name LIKE?","#{word}")
     elsif search == "partial_match"
@@ -29,5 +34,24 @@ class Result < ApplicationRecord
     else
       @result = Result.all
     end
+  end
+
+  def self.search(keyword, range)
+  results = self.all
+  if keyword.present?
+    if range == 'name'
+     results = results.where("name LIKE ?", "%#{keyword}%")
+    end
+
+    if range == 'prefecture'
+     results = results.where("prefecture LIKE ?", "%#{keyword}%")
+    end
+
+    if range == 'city'
+     results = results.where("city LIKE ?", "%#{keyword}%")
+    end
+  end
+
+  results
   end
 end

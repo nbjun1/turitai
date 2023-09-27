@@ -1,0 +1,7 @@
+<div class="search_form">
+  <%= form_with url: keysearch_path, local: true, method: :get, class: "d-flex" do |f| %>
+    <%= f.text_field :search, placeholder: "--キーワードを入力--", class:"text-center" %>
+    <%= f.select :range, options_for_select([["釣果", "name"], ["都道府県", "prefecture"], ["市区町村", "city"]]) %>
+    <%= f.submit "検索",class: "btn text-white form-control", style: "background-color: #a0522d;" %>
+  <% end %>
+</div>

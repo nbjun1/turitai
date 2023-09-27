@@ -33,8 +33,8 @@ ja:
         wave15m: "波高1.5m以上"
 
       lights:
-        yes: "有り"
-        no: "無し"
+        presence: "有り"
+        absence: "無し"
 
   activerecord:
     errors:

@@ -27,10 +27,11 @@
   </div>
 <% end %>
   <% if current_member == @member && member.present? %>
+   <% unless member.guest_member? %>
     <div>
       <%= link_to "EDIT", member_path(member.id), class: "btn btn-secondary" %>
     </div>
-
+   <% end %>
     <div>
       <%= link_to "新規釣果", member_result_new_path, class: "btn btn-success" %>
     </div>
