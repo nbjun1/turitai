@@ -106,8 +106,8 @@ ActiveRecord::Schema.define(version: 2023_09_26_042145) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "member_id"
     t.integer "genre_id"
-    t.integer "area_id"
-    t.integer "area_detail_id"
+    t.string "prefecture"
+    t.string "city"
     t.string "title", default: "", null: false
     t.text "body"
     t.string "name", default: "", null: false

@@ -1,0 +1,37 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-3">
+      </div
+      <div class="col-md-9">
+        <h3><strong>キーワード結果</strong> (全 <strong><%= @results_count %></strong> 件)</h3>
+        <% if @search_result.present? %>
+  <h2>キーワード検索結果 "<%= params[:search] %>"</h2>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>釣果</th>
+        <th>都道府県</th>
+        <th>市区町村</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @search_result.each do |result| %>
+        <tr>
+          <td><%= result.name %></td>
+          <td><%= result.prefecture %></td>
+          <td><%= result.city %></td>
+          <td><%= link_to '詳細', member_result_show_path(result) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>キーワードに一致する結果はありません。</p>
+<% end %>
+        <div class="d-flex justify-content-center text-center">
+          <%= paginate @results %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

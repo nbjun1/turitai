@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class Member::SessionsController < Devise::SessionsController
+
+  def guest_sign_in
+    member = Member.guest
+    sign_in member
+    redirect_to member_mypage_path(member), notice: "ゲスト会員でログインしました。"
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

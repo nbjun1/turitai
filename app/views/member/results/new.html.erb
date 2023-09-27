@@ -51,9 +51,9 @@
     <div class="row">
       <div class="col">
         <%= f.label :都道府県 %>
-        <%= f.select :prefecture, @prefectures, include_blank: "--選択して下さい--", class: "form-control" %>
+        <%= f.text_field :prefecture, include_blank: "--入力して下さい--", class: "form-control" %>
         <%= f.label :市区町村 %>
-        <%= f.select :city, @cities || [], include_blank: "--選択して下さい--", class: "form-control" %>
+        <%= f.text_field :city, include_blank: "--入力してください--", class: "form-control" %>
       </div>
     </div>
 
@@ -94,7 +94,7 @@
       </div>
     </div>
 
-    <div class="form-group row">
+    <div class="row">
       <div class="col-sm-9 offset-sm-3">
         <%= f.submit '釣果投稿', class: "btn btn-primary" %>
       </div>
@@ -102,50 +102,50 @@
   <% end %>
 </div><!-- container -->
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
+<!--<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>-->
+<!--<script>-->
 
- $(document).on('turbolinks:load', function() {
+<!-- $(document).on('turbolinks:load', function() {-->
 
-//                 //都道府県一覧を取得する
-//                 $.ajax({
-//                     url: 'https://geoapi.heartrails.com/api/json?method=getPrefectures',
-//                     method: 'GET',
-//                     dataType: 'jsonp'
-//                 }).done((res)=>{
-//                     console.log('都道府県取得');
-//                     let prefectures = res.response.prefecture;
-//                     for(let prefecture of prefectures){
-//                         $('#result_prefectures').append(`<option>${prefecture}</option>`);
-//                     }
+                <!--//都道府県一覧を取得する-->
+<!--                $.ajax({-->
+<!--                    url: 'https://geoapi.heartrails.com/api/json?method=getPrefectures',-->
+<!--                    method: 'GET',-->
+<!--                    dataType: 'jsonp'-->
+<!--                }).done((res)=>{-->
+<!--                    console.log('都道府県取得');-->
+<!--                    let prefectures = res.response.prefecture;-->
+<!--                    for(let prefecture of prefectures){-->
+<!--                        $('#result_prefectures').append(`<option>${prefecture}</option>`);-->
+<!--                    }-->
 
-//                 }).fail((error)=>{
-//                     console.log(error);
-//                 })
+<!--                }).fail((error)=>{-->
+<!--                    console.log(error);-->
+<!--                })-->
 
 
 
-console.log($('#result_prefectures'))
-                 $(document).on('change','#result_prefecture',()=>{
-                    let prefecture = $('#result_prefecture').val();
-                    $.ajax({
-                        url: 'https://geoapi.heartrails.com/api/json?method=getCities',
-                        method: 'GET',
-                        dataType: 'jsonp',
-                        data: {
-                            prefecture: prefecture
-                        }
-                    }).done((res)=>{
-                        let cities = res.response.location;
-                        console.log(cities);
-                        $('#result_city').empty();
-                        $('#result_city').append(`<option>選択してください</option>`);
-                        for(let city of cities){
-                            $('#result_city').append(`<option>${city.city}</option>`);
-                        }
-                    }).fail((error)=>{
-                        console.log(error);
-                    })
-                 })
-             })
-        </script>
+<!--console.log($('#result_prefectures'))-->
+<!--                 $(document).on('change','#result_prefecture',()=>{-->
+<!--                    let prefecture = $('#result_prefecture').val();-->
+<!--                    $.ajax({-->
+<!--                        url: 'https://geoapi.heartrails.com/api/json?method=getCities',-->
+<!--                        method: 'GET',-->
+<!--                        dataType: 'jsonp',-->
+<!--                        data: {-->
+<!--                            prefecture: prefecture-->
+<!--                        }-->
+<!--                    }).done((res)=>{-->
+<!--                        let cities = res.response.location;-->
+<!--                        console.log(cities);-->
+<!--                        $('#result_city').empty();-->
+<!--                        $('#result_city').append(`<option>選択してください</option>`);-->
+<!--                        for(let city of cities){-->
+<!--                            $('#result_city').append(`<option>${city.city}</option>`);-->
+<!--                        }-->
+<!--                    }).fail((error)=>{-->
+<!--                        console.log(error);-->
+<!--                    })-->
+<!--                 })-->
+<!--             })-->
+<!--        </script>-->
