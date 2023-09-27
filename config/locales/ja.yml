@@ -36,7 +36,6 @@ ja:
         presence: "有り"
         absence: "無し"
 
-    result:
       time:
         morning_mazume: "朝マズメ"
         day_time: "日中"
