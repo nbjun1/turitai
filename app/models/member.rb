@@ -33,4 +33,8 @@ class Member < ApplicationRecord
     email == GUEST_MEMBER_EMAIL
   end
 
+  def active_for_authentication?
+    super && (is_withdrawal == false)
+  end
+
 end
