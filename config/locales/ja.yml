@@ -36,6 +36,42 @@ ja:
         presence: "有り"
         absence: "無し"
 
+    result:
+      time:
+        morning_mazume: "朝マズメ"
+        day_time: "日中"
+        evening_mazume: "夕マズメ"
+        night_time: "夜間"
+
+      weather:
+        sunny: "晴れ"
+        cloudy: "曇り"
+        rain: "雨"
+        snow: "雪"
+
+      tide:
+        spring_tide: "大潮"
+        middle_tide: "中潮"
+        neap_tide: "小潮"
+        nagasio: "長潮"
+        wakasio: "若潮"
+
+      tide_updown:
+        up_tide: "上げ潮"
+        high_tide: "満潮"
+        down_tide: "下げ潮"
+        low_tide: "干潮"
+
+      wave:
+        wave0m: "波高0.5m未満"
+        wave05m: "波高1.0m未満"
+        wave10m: "波高1.5m未満"
+        wave15m: "波高1.5m以上"
+
+      light:
+        presence: "有り"
+        absence: "無し"
+
   activerecord:
     errors:
       messages:
