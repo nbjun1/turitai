@@ -13,44 +13,7 @@
           <%= image_tag "no_image.jpg" %>
         <% end %>
       </div>
-      <div>
-        <%= @result.title %>
-      </div>
-      <div>
-        <%= @result.body %>
-      </div>
-      <div>
-        <%= @result.name %>
-      </div>
-      <div>
-        <%= @result.point %>
-      </div>
-      <div>
-        <%= @result.prefecture %>
-      </div>
-      <div>
-        <%= @result.city %>
-      </div>
-      <div>
-        <%= @result.genre.method %>
-      </div>
-      <div>
-        <%= @result.time_i18n %>
-      </div>
-      <div>
-        <%= @result.weather_i18n %>
-      </div>
-      <div>
-        <%= @result.tide_i18n %>
-      </div>
-      <div>
-        <%= @result.tide_updown_i18n %>
-      </div>
-      <div>
-        <%= @result.wave_i18n %>
-      </div>
-      <div>
-        <%= @result.light_i18n %>
+        <%= render 'member/results/show', result: @result %>
       </div>
       <div>
        <%= render "member/favorites/favorite", result: @result %>
@@ -62,7 +25,7 @@
         <% end %>
       </div>
       <% if member_signed_in? || admin_signed_in? %>
-        <div>
+
           <table class="table">
             <% @result.comments.each do |comment| %>
               <tbody>
@@ -71,7 +34,7 @@
                     <%= comment.comment %>
                   </td>
                   <td>
-                    <%= link_to member_mypage_path(@member) do %>
+                    <%= link_to member_mypage_path(comment.member) do %>
                       <%= image_tag comment.member.get_profile_image %>
                       <%= comment.member.name %>
                     <% end %>
@@ -88,7 +51,7 @@
               </tbody>
             <% end %>
           </table>
-        </div>
+
         <div>
          <% if member_signed_in? %>
           <%= form_with model: [@result, @comment], url: member_result_comments_path(@result), method: :post, local: true do |f| %>
