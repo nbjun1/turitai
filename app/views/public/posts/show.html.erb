@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <div>
+        <% if @post.image.attached? %>
+         <%= image_tag @post.image %>
+        <% end %>
+      </div>
+        <div class="tag-box">
+          <% @post.tags.each do |tag| %>
+            <span class="label"><%= tag.name %></span>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to "変更", post_path %>
+          <%= link_to "戻る", root_path %>
+        </div>
+    </div>
+  </div>
+</div>

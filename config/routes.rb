@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get "/genre/:id/show" => "public/genres#show", as: :genre_show
   get "/search" => "public/searches#search"
   get "/keysearch" => "public/searches#keysearch"
+  get "/post" => "public/posts#new", as: :image
+  post "/post" => "public/posts#create"
+  get "/post/:id/show" => "public/posts#show", as: :image_show
 
   devise_for :admin, :controllers => {
   :sessions => 'admin/sessions',
