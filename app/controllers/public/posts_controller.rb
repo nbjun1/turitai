@@ -7,10 +7,9 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    
-    if params[:image].present?
+    if params[:post].present?
       @post = Post.new(post_params)
-      tags = Vision.get_image_data (post_params[:image])
+      tags = Vision.get_image_data(post_params[:image])
       if @post.save
         tags.each do |tag|
           @post.tags.create(name: tag)
@@ -21,7 +20,7 @@ class Public::PostsController < ApplicationController
       end
     else
       flash[:notice] = '画像を選択してください'
-      render :new
+      redirect_to image_path
     end
   end
 
@@ -37,6 +36,7 @@ class Public::PostsController < ApplicationController
   end
 
   private
+
   def post_params
     params.require(:post).permit(:image)
   end
