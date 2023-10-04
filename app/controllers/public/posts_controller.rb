@@ -7,14 +7,20 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    tags = Vision.get_image_data(post_params[:image])
-    if @post.save
-      tags.each do |tag|
-        @post.tags.create(name: tag)
+    
+    if params[:image].present?
+      @post = Post.new(post_params)
+      tags = Vision.get_image_data (post_params[:image])
+      if @post.save
+        tags.each do |tag|
+          @post.tags.create(name: tag)
+        end
+        redirect_to image_show_path(@post.id)
+      else
+        render :new
       end
-      redirect_to image_show_path(@post.id)
     else
+      flash[:notice] = '画像を選択してください'
       render :new
     end
   end
