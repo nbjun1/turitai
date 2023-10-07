@@ -1,6 +1,5 @@
 class Prefecture < ApplicationRecord
 
-  
   has_many :results
   validates :prefecture, presence: true
   
