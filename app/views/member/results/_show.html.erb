@@ -13,7 +13,11 @@
           <td>釣果:<%= result.name %></td>
         </tr>
         <tr>
-          <td>ポイント:<%= result.point %></td>
+          <td>
+            <% if member_signed_in? %>
+            ポイント:<%= result.point %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>都道府県:<%= result.prefecture %></td>
