@@ -16,7 +16,7 @@
       <div>
         <%= render 'member/results/show', result: @result %>
       </div>
-      <div>
+      <div id="favorite_buttons_<%= @result.id %>">
        <%= render "member/favorites/favorite", result: @result %>
       </div>
       <div>
