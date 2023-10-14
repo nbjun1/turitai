@@ -1,13 +1,13 @@
 <% if member_signed_in? %>
  <% if result.favorited_by?(current_member) %>
   <p>
-  <%= link_to member_result_favorites_path(result), method: :delete do %>
+  <%= link_to member_result_favorites_path(result), method: :delete, remote: true, data: {"turbolinks" => false} do %>
     ♥ <%= result.favorites.count %>いいね
   <% end %>
   </p>
  <% else %>
   <p>
-  <%= link_to member_result_favorites_path(result), method: :post do %>
+  <%= link_to member_result_favorites_path(result), method: :post, remote: true, data: {"turbolinks" => false} do %>
     ♡ <%= result.favorites.count %>いいね
   <% end %>
   </p>
