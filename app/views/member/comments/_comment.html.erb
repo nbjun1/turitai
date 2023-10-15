@@ -1,0 +1,27 @@
+      <% if member_signed_in? || admin_signed_in? %>
+          <table class="table">
+            <% result.comments.each do |comment| %>
+              <tbody>
+                <tr>
+                  <td>
+                    <%= comment.comment %>
+                  </td>
+                  <td>
+                    <%= link_to member_mypage_path(comment.member) do %>
+                      <%= image_tag comment.member.get_profile_image %>
+                      <%= comment.member.name %>
+                    <% end %>
+                  </td>
+                  <td>
+                    <%= comment.created_at.strftime('%Y/%m/%d') %>
+                    <% if comment.member == current_member || admin_signed_in? %>
+                      <td>
+                        <%= link_to "削除", member_result_comment_path(comment.result, comment), method: :delete %>
+                      </td>
+                    <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+          <% end %>

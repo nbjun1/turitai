@@ -1,0 +1,6 @@
+         <% if member_signed_in? || admin_signed_in? %>
+          <%= form_with model: [result, comment], url: member_result_comments_path(result), method: :post, local: true do |f| %>
+            <%= f.text_area :comment, rows: '5' %>
+            <%= f.submit "送信する" %>
+          <% end %>
+         <% end %>
