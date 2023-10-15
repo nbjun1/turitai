@@ -1,0 +1,3 @@
+$('#comment').html("<%= j(render "member/comments/comment", result: @result) %>");
+<!--フォームを送信したあとにフォームの値を空にする-->
+$("textarea").val('');
