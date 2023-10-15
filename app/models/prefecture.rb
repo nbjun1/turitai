@@ -1,6 +1,7 @@
 class Prefecture < ApplicationRecord
 
   has_many :results
+  has_many :cities
   validates :prefecture, presence: true
   
   def self.looks(search, word)

@@ -2,11 +2,8 @@ class Result < ApplicationRecord
 
   belongs_to :member
   belongs_to :genre
-
-  #APIで読み込んだ情報を新規投稿時に渡せなかったのでいったん切り離しテーブルのカラムも変更している
-  # belongs_to :prefecture
-  # belongs_to :city
-
+  belongs_to :prefecture
+  belongs_to :city
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many_attached :result_images

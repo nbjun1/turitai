@@ -5,8 +5,8 @@ class CreateResults < ActiveRecord::Migration[6.1]
       t.timestamps
       t.integer :member_id
       t.integer :genre_id
-      t.string :prefecture
-      t.string :city
+      t.integer :prefecture
+      t.integer :city
       t.string :title, null: false, default: ""
       t.text :body
       t.string :name, null: false, default: ""
