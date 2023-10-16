@@ -11,6 +11,8 @@ class Result < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :name, presence: true
+  validates :prefecture, presence: true
+  validates :city, presence: true
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)

@@ -1,6 +1,3 @@
-# require 'net/http'
-# require 'uri'
-# require 'json'
 class Member::ResultsController < ApplicationController
 
   def index
@@ -22,7 +19,6 @@ class Member::ResultsController < ApplicationController
 
   def cities
     prefecture = params[:prefecture]
-
     @cities = Heartrails::GeoAPI.get_cities(prefecture)
     render json: @cities
   end
@@ -32,9 +28,10 @@ class Member::ResultsController < ApplicationController
   @result.member_id = current_member.id
 
     if @result.save
-    redirect_to member_result_show_path(@result), notice: "釣果を投稿しました"
+      redirect_to member_result_show_path(@result), notice: "釣果を投稿しました"
     else
-    render :new, notice: "釣果が正常に投稿されませんでした。"
+      @prefectures = Heartrails::GeoAPI.get_prefectures
+      render :new, notice: "釣果が正常に投稿されませんでした。"
     end
   end
 
