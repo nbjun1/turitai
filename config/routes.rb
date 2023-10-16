@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+
   end
 
   devise_scope :member do

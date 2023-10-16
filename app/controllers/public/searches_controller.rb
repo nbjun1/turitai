@@ -8,10 +8,6 @@ class Public::SearchesController < ApplicationController
 
       if @range == "Result"
       @results = Result.looks(params[:search], @word, @prefecture, @city)
-      elsif @range == "Result"
-      @results = Prefecture.looks(params[:search], @prefecture)
-      elsif @range == "Result"
-      @results = City.looks(params[:search], @city)
       end
 
     # @results が nil の場合にデフォルトの空の配列を設定

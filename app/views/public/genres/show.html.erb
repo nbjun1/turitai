@@ -1,24 +1,24 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-5">
+    <div class="col-4">
       <%= render 'member/details/show', member: @member %>
     </div>
-    <div class="col-7">
+    <div class="col-8">
       <h4><%= @genre.method %>一覧</h4>
-      <table>
+      <table class="table table-bordered border">
         <thead>
           <tr>
-            <th>釣果</th>
-            <th>タイトル</th>
-            <th></th>
+            <th class="border border-dark align-middle bg-white">釣果</th>
+            <th class="border border-dark align-middle bg-white">タイトル</th>
+            <th class="border border-dark align-middle bg-white"></th>
           </tr>
         </thead>
         <tbody>
           <% @results.each do |result| %>
             <tr>
-              <td><%= result.name %></td>
-              <td><%= result.title %></td>
-              <td><%= link_to "詳細", member_result_show_path(result.id) %></td>
+              <td class="border border-dark align-middle bg-white"><%= result.name %></td>
+              <td class="border border-dark align-middle bg-white"><%= result.title %></td>
+              <td class="border border-dark align-middle bg-white"><%= link_to "詳細", member_result_show_path(result.id) %></td>
             </tr>
           <% end %>
         </tbody>
@@ -26,6 +26,6 @@
       <div class="d-flex justify-content-center text-center">
         <%= paginate @results %>
       </div>
-    </div>
-  </div>
-</div>
+    </div><!--col-8 -->
+  </div><!-- row -->
+</div><!-- container -->

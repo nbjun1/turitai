@@ -2,8 +2,6 @@ class Result < ApplicationRecord
 
   belongs_to :member
   belongs_to :genre
-  #belongs_to :prefecture
-  #belongs_to :city
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many_attached :result_images
