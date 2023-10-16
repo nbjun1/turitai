@@ -52,6 +52,11 @@
       <div class="col">
         <%= f.label :都道府県 %>
         <%= f.select :prefecture, @prefectures, include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
         <%= f.label :市区町村 %>
         <%= f.select :city, @cities || [], include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
