@@ -61,7 +61,7 @@ class Member::ResultsController < ApplicationController
   private
 
   def result_params
-    params.require(:result).permit(:title, :body, :name, :point, :genre_id, :time, :weather, :tide, :tide_updown, :wave, :light, :prefecture_id, :city_id, :moon, result_images: [])
+    params.require(:result).permit(:title, :body, :name, :point, :genre_id, :time, :weather, :tide, :tide_updown, :wave, :light, :prefecture, :city, :moon, result_images: [])
   end
 
 end
