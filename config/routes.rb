@@ -11,13 +11,14 @@ Rails.application.routes.draw do
   get "/post/:id/show" => "public/posts#show", as: :image_show
 
   devise_for :admin, :controllers => {
-  :sessions => 'admin/sessions',
-  :passwords => 'admin/passworde',
+  :sessions => "admin/sessions",
+  :passwords => "admin/passwords",
+  :registrations => "admin/registrations"
   }
   devise_for :member, :controllers => {
   :sessions => 'member/sessions',
   :passwords => 'member/passwords',
-  :registrations => 'member/registrations',
+  :registrations => 'member/registrations'
   }
 
   namespace :admin do
