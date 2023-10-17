@@ -14,20 +14,22 @@
     </div>
     <div class="row">
       <div class="col-4">
-        <tbody>
-          <tr>
-            <td>ニックネーム</td>
-          </tr>
-          <tr>
-            <td><%= member.name %></td>
-          </tr>
-          <tr>
-            <td>プロフィール</td>
-          </tr>
-          <tr>
-            <td><%= member.introduction %></td>
-          </tr>
-        </tbody>
+        <table>
+          <tbody>
+            <tr>
+              <td>ニックネーム</td>
+            </tr>
+            <tr>
+              <td><%= member.name %></td>
+            </tr>
+            <tr>
+              <td>プロフィール</td>
+            </tr>
+            <tr>
+              <td><%= member.introduction %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   <% end %>
@@ -35,11 +37,11 @@
 
 <% if current_member == @member && member.present? %>
   <% unless member.guest_member? %>
-    <div>
+    <div class="m-2">
       <%= link_to "EDIT", member_path(member.id), class: "btn btn-secondary" %>
     </div>
   <% end %>
-  <div>
+  <div class="m-2">
     <%= link_to "釣果投稿", member_result_new_path, class: "btn btn-success" %>
   </div>
 <% end %>

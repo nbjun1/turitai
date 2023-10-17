@@ -1,5 +1,7 @@
 class Member::ResultsController < ApplicationController
 
+  before_action :authenticate_member!, only: [:new]
+
   def index
     @member = Member.find(params[:id])
     @results = Result.where(member_id: @member.id).includes(:member).order(created_at: :desc).page(params[:page])

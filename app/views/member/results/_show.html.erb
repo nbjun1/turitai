@@ -4,45 +4,45 @@
       <table class="table table-bordered border">
         <tbody>
           <tr>
-            <td>タイトル:<%= result.title %></td>
+            <td>タイトル　:<%= result.title %></td>
           </tr>
           <tr>
-            <td>投稿文:<%= result.body %></td>
+            <td>投稿文　　:<%= result.body %></td>
           </tr>
           <tr>
-            <td>釣果:<%= result.name %></td>
+            <td>釣果　　　:<%= result.name %></td>
           </tr>
           <tr>
             <% if member_signed_in? %>
-              <td>ポイント:<%= result.point %></td>
+              <td>ポイント　:<%= result.point %></td>
             <% end %>
           </tr>
           <tr>
-            <td>都道府県:<%= result.prefecture %></td>
+            <td>都道府県　:<%= result.prefecture %></td>
           </tr>
           <tr>
-            <td>市区町村:<%= result.city %></td>
+            <td>市区町村　:<%= result.city %></td>
           </tr>
           <tr>
-            <td>釣り方:<%= result.genre.method %></td>
+            <td>釣り方　　:<%= result.genre.method %></td>
           </tr>
           <tr>
-            <td>時間帯:<%= result.time_i18n %></td>
+            <td>時間帯　　:<%= result.time_i18n %></td>
           </tr>
           <tr>
-            <td>天気:<%= result.weather_i18n %></td>
+            <td>天気　　　:<%= result.weather_i18n %></td>
           </tr>
           <tr>
-            <td>潮:<%= result.tide_i18n %></td>
+            <td>潮　　　　:<%= result.tide_i18n %></td>
           </tr>
           <tr>
-            <td>潮の上下:<%= result.tide_updown_i18n %></td>
+            <td>潮の上下　:<%= result.tide_updown_i18n %></td>
           </tr>
           <tr>
-            <td>波高:<%= result.wave_i18n %></td>
+            <td>波高　　　:<%= result.wave_i18n %></td>
           </tr>
           <tr>
-            <td>光源:<%= result.light_i18n %></td>
+            <td>光源　　　:<%= result.light_i18n %></td>
           </tr>
         </tbody>
       </table>
