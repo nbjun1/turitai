@@ -1,6 +1,3 @@
-# require 'net/http'
-# require 'uri'
-# require 'json'
 class Member::ResultsController < ApplicationController
 
   def index
@@ -17,7 +14,13 @@ class Member::ResultsController < ApplicationController
 
   def new
     @result = Result.new
-    #@prefectures = get_prefectures
+    @prefectures = Heartrails::GeoAPI.get_prefectures
+  end
+
+  def cities
+    prefecture = params[:prefecture]
+    @cities = Heartrails::GeoAPI.get_cities(prefecture)
+    render json: @cities
   end
 
   def create
@@ -25,9 +28,10 @@ class Member::ResultsController < ApplicationController
   @result.member_id = current_member.id
 
     if @result.save
-    redirect_to member_result_show_path(@result), notice: "釣果を投稿しました"
+      redirect_to member_result_show_path(@result), notice: "釣果を投稿しました"
     else
-    render :new, notice: "釣果が正常に投稿されませんでした。"
+      @prefectures = Heartrails::GeoAPI.get_prefectures
+      render :new, notice: "釣果が正常に投稿されませんでした。"
     end
   end
 
@@ -57,26 +61,4 @@ class Member::ResultsController < ApplicationController
     params.require(:result).permit(:title, :body, :name, :point, :genre_id, :time, :weather, :tide, :tide_updown, :wave, :light, :prefecture, :city, :moon, result_images: [])
   end
 
-  # def get_prefectures
-  #   uri = URI.parse('https://geoapi.heartrails.com/api/json?method=getPrefectures')
-  #   response = Net::HTTP.get_response(uri)
-  #   if response.code == '200'
-  #     JSON.parse(response.body)['response']['prefecture']
-  #   else
-  #     []
-  #   end
-  # end
-
-  # def get_cities(prefecture_name)
-  #   return [] if prefecture_name.blank?
-
-  #   encoded_prefecture_name = ERB::Util.url_encode(prefecture_name)
-  #   uri = URI.parse("https://geoapi.heartrails.com/api/json?method=getCities&prefecture=#{encoded_prefecture_name}")
-  #   response = Net::HTTP.get_response(uri)
-  #   if response.code == '200'
-  #     JSON.parse(response.body)['response']['city']
-  #   else
-  #     []
-  #   end
-  # end
 end

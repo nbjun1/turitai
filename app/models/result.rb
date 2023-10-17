@@ -2,11 +2,6 @@ class Result < ApplicationRecord
 
   belongs_to :member
   belongs_to :genre
-
-  #APIで読み込んだ情報を新規投稿時に渡せなかったのでいったん切り離しテーブルのカラムも変更している
-  # belongs_to :prefecture
-  # belongs_to :city
-
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many_attached :result_images
@@ -14,6 +9,8 @@ class Result < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :name, presence: true
+  validates :prefecture, presence: true
+  validates :city, presence: true
 
   def favorited_by?(member)
     favorites.exists?(member_id: member.id)

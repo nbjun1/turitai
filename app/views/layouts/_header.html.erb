@@ -3,7 +3,9 @@
     <div class="container-fluid">
       <!--会員がログインしているとき-->
         <div class="collapse navbar-collapse">
-        <h2><%= link_to "釣りたい！！", root_path %></h2>
+        <div>
+          <%= link_to image_tag("turitai.jpg", width: 200, height: 100), "/" %>
+        </div>
         <% if member_signed_in? %>
           <ul class="nav navbar-nav ml-auto">
             <li class="mr-5">

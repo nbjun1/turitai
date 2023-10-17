@@ -44,9 +44,13 @@ Rails.application.routes.draw do
 
     # 釣果情報のコメントとお気に入りに関するルーティング
     resources :results, only: [] do
+      collection do
+        get "cities"
+      end
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
+
   end
 
   devise_scope :member do
