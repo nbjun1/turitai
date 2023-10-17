@@ -14,6 +14,7 @@
 
 #会員のテストデータ
   test_user = Member.create!(
+    name: "テストデータ",
     email: "test@mail",
     password: "test4321"
     )

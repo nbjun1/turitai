@@ -1,6 +1,8 @@
 class Member::DetailsController < ApplicationController
 
-   before_action :ensure_guest_member, only: [:edit]
+  before_action :authenticate_member!
+  before_action :ensure_guest_member, only: [:edit]
+  before_action :authorize_member, only: [:edit, :confirm]
 
   def show
     @member = Member.find(params[:id])
@@ -8,9 +10,9 @@ class Member::DetailsController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
-    unless @member == current_member
-      redirect_to member_path(current_member.id)
-    end
+    # unless @member == current_member
+    #   redirect_to member_path(current_member.id)
+    # end
   end
 
   def update
@@ -43,6 +45,12 @@ class Member::DetailsController < ApplicationController
     @member = Member.find(params[:id])
     if @member.guest_member?
       redirect_to member_mypage_path(member), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+    end
+  end
+
+  def authorize_member
+    unless current_member == @member
+      redirect_to root_path, notice: "アクセス権がありません。"
     end
   end
 
