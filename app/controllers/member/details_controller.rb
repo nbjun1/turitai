@@ -10,7 +10,6 @@ class Member::DetailsController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
-
   end
 
   def update
