@@ -108,6 +108,7 @@
 </div><!-- container -->
 
 <script>
+// document.addEventListener('DOMContentLoaded', function () {ページ遷移後リロードしないとscriptが動作しないのでDOMContentLoadedをturbolinks:loadへ変更
 document.addEventListener('turbolinks:load', function () {
   const prefectureSelect = document.getElementById('result_prefecture');
   const citySelect = document.getElementById('result_city');
