@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     patch "/result/:id/edit" => "results#update"
     delete "/result/:id" => "results#destroy", as: :result_delete
 
-    # 釣果情報のコメントとお気に入りに関するルーティング
+    # 釣果情報のコメントとお気に入りに関するルーティング APIを使用した都道府県と市区町村名のためのルーティングを追加
     resources :results, only: [] do
       collection do
         get "cities"
