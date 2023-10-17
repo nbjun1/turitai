@@ -42,65 +42,65 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-9">
-        <%= f.label :ジャンル %>
+      <div class="col mt-3 offset-5">
+        <%= f.label :ジャンル　 %>
         <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :method), include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
 
     <div class="row">
-      <div class="col">
-        <%= f.label :都道府県 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :都道府県　 %>
         <%= f.select :prefecture, @prefectures, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
 
     <div class="row">
-      <div class="col">
-        <%= f.label :市区町村 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :市区町村　 %>
         <%= f.select :city, @cities || [], include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
 
     <div class="row">
-      <div class="col">
-        <%= f.label :時間帯 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :時間帯　　 %>
         <%= f.select :time, Result.times.keys.map { |k| [I18n.t("enums.result.times.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :天気 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :天気　　　 %>
         <%= f.select :weather, Result.weathers.keys.map { |k| [I18n.t("enums.result.weathers.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :潮 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :潮　　　　 %>
         <%= f.select :tide, Result.tides.keys.map { |k| [I18n.t("enums.result.tides.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :潮の上下 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :潮の上下　 %>
         <%= f.select :tide_updown, Result.tide_updowns.keys.map { |k| [I18n.t("enums.result.tide_updowns.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :波高 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :波高　　　 %>
         <%= f.select :wave, Result.waves.keys.map { |k| [I18n.t("enums.result.waves.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :光源 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :光源　　　 %>
         <%= f.select :light, Result.lights.keys.map { |k| [I18n.t("enums.result.lights.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-9 offset-sm-3">
+      <div class="col mt-3 offset-5">
         <%= f.submit '釣果投稿', class: "btn btn-primary" %>
       </div>
     </div>
