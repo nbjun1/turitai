@@ -2,7 +2,7 @@ class Member::DetailsController < ApplicationController
 
   before_action :authenticate_member!
   before_action :ensure_guest_member, only: [:edit]
-  before_action :authorize_member, only: [:edit, :confirm]
+  before_action :authorize_member, only: [:edit]
 
   def show
     @member = Member.find(params[:id])
@@ -10,9 +10,7 @@ class Member::DetailsController < ApplicationController
 
   def edit
     @member = Member.find(params[:id])
-    # unless @member == current_member
-    #   redirect_to member_path(current_member.id)
-    # end
+
   end
 
   def update
