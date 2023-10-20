@@ -49,47 +49,52 @@
     </div>
 
     <div class="row">
-      <div class="col">
-        <%= f.label :都道府県 %>
-        <%= f.text_field :prefecture, include_blank: "--入力して下さい--", class: "form-control" %>
-        <%= f.label :市区町村 %>
-        <%= f.text_field :city, include_blank: "--入力してください--", class: "form-control" %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :都道府県　 %>
+        <%= f.select :prefecture, @prefectures, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
 
     <div class="row">
-      <div class="col">
-        <%= f.label :時間帯 %>
+      <div class="col mt-3  offset-5">
+        <%= f.label :市区町村　 %>
+        <%= f.select :city, @cities || [], include_blank: "--選択して下さい--", class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col mt-3 offset-5">
+        <%= f.label :時間帯　　 %>
         <%= f.select :time, Result.times.keys.map { |k| [I18n.t("enums.result.times.#{k}"), k] }, selected: @result.time, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :天気 %>
+      <div class="col mt-3 offset-5">
+        <%= f.label :天気　　　 %>
         <%= f.select :weather, Result.weathers.keys.map { |k| [I18n.t("enums.result.weathers.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :潮 %>
+      <div class="col mt-3 offset-5">
+        <%= f.label :潮　　　　 %>
         <%= f.select :tide, Result.tides.keys.map { |k| [I18n.t("enums.result.tides.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :潮の上下 %>
+      <div class="col mt-3 offset-5">
+        <%= f.label :潮の上下　 %>
         <%= f.select :tide_updown, Result.tide_updowns.keys.map { |k| [I18n.t("enums.result.tide_updowns.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :波高 %>
+      <div class="col mt-3 offset-5">
+        <%= f.label :波高　　　 %>
         <%= f.select :wave, Result.waves.keys.map { |k| [I18n.t("enums.result.waves.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
     <div class="row">
-      <div class="col">
-        <%= f.label :光源 %>
+      <div class="col mt-3 offset-5">
+        <%= f.label :光源　　　 %>
         <%= f.select :light, Result.lights.keys.map { |k| [I18n.t("enums.result.lights.#{k}"), k] }, include_blank: "--選択して下さい--", class: "form-control" %>
       </div>
     </div>
@@ -103,3 +108,46 @@
     </div>
   <% end %>
 </div><!-- container -->
+
+<script>
+// document.addEventListener('DOMContentLoaded', function () {ページ遷移後リロードしないとscriptが動作しないのでDOMContentLoadedをturbolinks:loadへ変更
+document.addEventListener('turbolinks:load', function () {
+  const prefectureSelect = document.getElementById('result_prefecture');
+  const citySelect = document.getElementById('result_city');
+
+  // イベントリスナーの登録
+  prefectureSelect.addEventListener('change', function () {
+    const selectedPrefecture = prefectureSelect.value;
+    if (selectedPrefecture) {
+      fetchCities(selectedPrefecture);
+    }
+  });
+
+  // 初期表示時の都道府県
+  const selectedPrefecture = prefectureSelect.value;
+  if (selectedPrefecture) {
+    fetchCities(selectedPrefecture);
+  }
+
+  function fetchCities(prefecture) {
+    fetch(`/member/results/cities?prefecture=${encodeURIComponent(prefecture)}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+
+        // 市区町村のデータをcitySelectに設定する処理
+        for (var i = citySelect.options.length; i > 0; i--) {
+          citySelect.remove(0);
+          console.log(citySelect.options.length);
+        }
+        for (var i = 0; i < data.length; i++) {
+          var option = document.createElement('option');
+          option.text = data[i]
+          option.value = data[i]
+          citySelect.appendChild(option)
+        }
+      })
+      .catch(error => console.error('Error fetching cities:', error));
+  }
+});
+</script>

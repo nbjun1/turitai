@@ -39,6 +39,7 @@ class Member::ResultsController < ApplicationController
 
   def edit
     @result = Result.find(params[:id])
+    @prefectures = Heartrails::GeoAPI.get_prefectures
   end
 
   def update
