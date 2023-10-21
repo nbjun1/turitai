@@ -53,9 +53,14 @@ class Member::ResultsController < ApplicationController
 
   def destroy
     @result = Result.find(params[:id])
-    @member = @result.member
+
+    if @result.member_id == current_member.id
     @result.destroy
-    redirect_to member_mypage_path(@member.id), notice: "削除しました。"
+      redirect_to member_mypage_path(current_member.id), notice: "削除しました。"
+    else
+    # 所有者でない場合のエラー処理
+      redirect_to member_mypage_path(current_member.id), notice: "他のメンバーの投稿を削除する権限がありません。"
+    end
   end
 
   private
