@@ -8,15 +8,15 @@
 
 #管理者のログインデータ
   Admin.create!(
-    email: "admin@gmail",
-    password: "admin1234"
+    email: ENV['ADMIN_EMAIL'],
+    password: ENV['ADMIN_PASSWORD']
     )
 
 #会員のテストデータ
   test_user = Member.create!(
     name: "テストデータ",
-    email: "test@mail",
-    password: "test4321"
+    email: ENV['MEMBER_EMAIL'],
+    password: ENV['MEMBER_PASSWORD']
     )
 
 # ジャンルの中身のリスト
