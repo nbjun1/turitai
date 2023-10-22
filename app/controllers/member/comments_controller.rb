@@ -13,7 +13,10 @@ class Member::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @result = @comment.result
-    @comment.destroy
+
+    if @comment.member_id == current_member.id
+     @comment.destroy
+    end
   end
 
   private
