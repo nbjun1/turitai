@@ -26,7 +26,8 @@
 後ほど作成予定
 
 ### 開発環境
-- OS:Windows 10
-- 言語:Ruby
-- フレームワーク:Ruby on Rails 6.1.7.6
-- IDE:Cloud9
+- OS：Windows 10
+- 言語：HTML,CSS,Ruby,JavaScript
+- フレームワーク：Ruby on Rails 6.1.7.6
+- JSライブラリ：jQuery
+- IDE：Cloud9
