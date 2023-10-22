@@ -59,7 +59,7 @@ class Member::ResultsController < ApplicationController
       redirect_to member_mypage_path(current_member.id), notice: "削除しました。"
     else
     # 所有者でない場合のエラー処理
-      redirect_to member_mypage_path(current_member.id), notice: "他のメンバーの投稿を削除する権限がありません。"
+      redirect_to member_mypage_path(current_member.id), notice: "他会員の投稿を削除する事は出来ません。"
     end
   end
 
