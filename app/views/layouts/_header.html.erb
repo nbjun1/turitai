@@ -1,16 +1,21 @@
 <header>
-  <nav class="nav navbar-nav navbar-expand-lg bg-white border-bottom">
+  <nav class="nav navbar-nav navbar-expand-lg bg-white border-bottom navbar-light">
     <div class="container-fluid">
-      <!--会員がログインしているとき-->
-        <div class="collapse navbar-collapse">
-        <div>
-          <%= link_to image_tag("turitai.jpg", width: 200, height: 100), "/" %>
-        </div>
+      <!-- 会員がログインしているとき -->
+      <div>
+        <%= link_to image_tag("turitai.jpg", width: 200, height: 100), "/" %>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
         <% if member_signed_in? %>
           <ul class="nav navbar-nav ml-auto">
             <li class="mr-5">
               <%= link_to image_path, class: "nav-link btn btn-dark" do %>
-               画像診断
+                画像診断
               <% end %>
             </li>
             <li class="mr-5">
@@ -35,43 +40,43 @@
             </li>
           </ul>
           <div>
-            <!--%= render "layouts/search" %-->
             <%= render "layouts/keysearch" %>
           </div>
         </div>
-        <!--管理者がログインしているとき-->
+
+        <!-- 管理者がログインしているとき -->
         <% elsif admin_signed_in? %>
-        <div  class="collapse navbar-collapse">
-          <ul class="nav navbar-nav ml-auto">
-            <li class="mr-5">
-              <%= link_to root_path, class: "nav-link btn btn-outline-warning" do %>
-                釣果一覧
-              <% end %>
-            </li>
-            <li class="mr-5">
-              <%= link_to admin_top_path, class: "nav-link btn btn-outline-info" do %>
-                会員一覧
-              <% end %>
-            <li class="mr-5">
-              <%= link_to admin_genres_path, class: "nav-link btn btn-outline-secondary" do %>
-                ジャンル一覧
-              <% end %>
-            </li>
-            <li class="mr-5">
-              <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-outline-danger" do %>
-                ログアウト
-              <% end %>
-            </li>
-          </ul-->
-          <div><!--%= render "layouts/search" % admin側に検索窓必要？一応コードをコメントアウトしておく--></div>
-        </div>
-        <!--どちらもログインしていないとき-->
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="mr-5">
+                <%= link_to root_path, class: "nav-link btn btn-outline-warning" do %>
+                  釣果一覧
+                <% end %>
+              </li>
+              <li class="mr-5">
+                <%= link_to admin_top_path, class: "nav-link btn btn-outline-info" do %>
+                  会員一覧
+                <% end %>
+              <li class="mr-5">
+                <%= link_to admin_genres_path, class: "nav-link btn btn-outline-secondary" do %>
+                  ジャンル一覧
+                <% end %>
+              </li>
+              <li class="mr-5">
+                <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link btn btn-outline-danger" do %>
+                  ログアウト
+                <% end %>
+              </li>
+            </ul>
+            <!-- 以下省略 -->
+          </div>
+
+        <!-- どちらもログインしていないとき -->
         <% else %>
-        <div  class="collapse navbar-collapse">
           <ul class="nav navbar-nav ml-auto">
             <li class="mr-5">
               <%= link_to image_path, class: "nav-link btn btn-dark" do %>
-               画像診断
+                画像診断
               <% end %>
             </li>
             <li class="mr-5">
@@ -104,11 +109,11 @@
             </li>
           </ul>
           <div>
-            <!--%= render "layouts/search" %-->
             <%= render "layouts/keysearch" %>
           </div>
-        </div>
+
         <% end %>
+      </div>
     </div>
   </nav>
 </header>
