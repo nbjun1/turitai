@@ -2,22 +2,23 @@
   <div class="row">
     <div class="col offset-sm-5">
       <div class="radio-group">
-          <%= form_with model: @member, url: admin_member_path, method: :patch, local: true do |f| %>
-    <div class="radio-group">
-      <%= f.collection_radio_buttons :is_withdrawal, [[false, "有効"], [true, "退会"]], :first, :last do |b| %>
-        <label class="radio-label">
-          <%= b.radio_button %> <%= b.label %>
-        </label>
-      <% end %>
-    </div>
+        <%= form_with model: @member, url: admin_member_path, method: :patch, local: true do |f| %>
+          <div class="radio-group">
+            <%= f.collection_radio_buttons :is_withdrawal, [[false, "有効"], [true, "退会"]], :first, :last, item_wrapper_class: 'mr-3' do |b| %>
+              <label class="radio-label">
+                <%= b.radio_button %> <%= b.label %>
+              </label>
+            <% end %>
+          </div>
 
-    <div class="form-group row mt-4">
-      <div class="col-sm-9 offset-sm-5">
-        <%= f.submit "変更を保存", class: "btn btn-danger" %>
-      </div>
-    </div>
-  <% end %>
+          <div class="form-group row mt-4">
+            <div class="col-sm-9 offset">
+              <%= f.submit "変更を保存", class: "btn btn-danger", data: { confirm: "最終確認" } %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
